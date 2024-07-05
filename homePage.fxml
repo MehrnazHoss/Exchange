@@ -2,15 +2,20 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Sphere?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1550.0" style="-fx-background-color: #cbccf5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1550.0" style="-fx-background-color: #cbccf5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.final_project.HomeController">
    <children>
       <ImageView fitHeight="800.0" fitWidth="804.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,66 +26,522 @@
             <Image url="@../icons/home1.jpg" />
          </image>
       </ImageView>
-      <Label alignment="TOP_LEFT" layoutX="23.0" layoutY="318.0" prefHeight="441.0" prefWidth="1505.0" style="-fx-background-color: #dfdff5; -fx-background-radius: 15;">
-         <graphic>
-            <Slider orientation="VERTICAL" prefHeight="473.0" prefWidth="0.0" />
-         </graphic>
+      <Label alignment="TOP_LEFT" layoutX="23.0" layoutY="318.0" prefHeight="441.0" prefWidth="1505.0" style="-fx-background-color: #7d61ba; -fx-background-radius: 15;">
+         <effect>
+            <InnerShadow choke="0.47" height="172.1" radius="106.275" width="255.0">
+               <color>
+                  <Color red="0.20592206716537476" green="0.04087475687265396" blue="0.8026315569877625" />
+               </color>
+            </InnerShadow>
+         </effect>
       </Label>
       <Button layoutX="685.0" layoutY="245.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="231.0" style="-fx-background-radius: 30; -fx-background-color: #ff63b1;" text="Changes" textFill="#126f58">
          <font>
             <Font name="Lucida Sans Demibold Italic" size="27.0" />
          </font>
+         <effect>
+            <Lighting diffuseConstant="1.33">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
       </Button>
       <Button layoutX="949.0" layoutY="245.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="267.0" style="-fx-background-radius: 30; -fx-background-color: #ff91c8;" text="Maximum Rate" textFill="#167c63">
          <font>
             <Font name="Lucida Sans Demibold Italic" size="27.0" />
          </font>
+         <effect>
+            <Lighting diffuseConstant="1.33">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
       </Button>
       <Button layoutX="1248.0" layoutY="245.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="267.0" style="-fx-background-radius: 30; -fx-background-color: #fcbddd;" text="Minimum Rate" textFill="#1db28d">
          <font>
             <Font name="Lucida Sans Demibold Italic" size="27.0" />
          </font>
+         <effect>
+            <Lighting diffuseConstant="1.33">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
       </Button>
-      <Button layoutX="47.0" layoutY="245.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="338.0" style="-fx-background-radius: 30; -fx-background-color: #ff0080;" text="Currency Market" textFill="#094335">
+      <Button layoutX="47.0" layoutY="245.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="338.0" style="-fx-background-radius: 30; -fx-background-color: #ff0080;" text="Currency Market" textFill="#083b32">
          <font>
             <Font name="Lucida Sans Demibold Italic" size="27.0" />
          </font>
+         <effect>
+            <Lighting diffuseConstant="1.33">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
       </Button>
       <Button layoutX="421.0" layoutY="245.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="231.0" style="-fx-background-radius: 30; -fx-background-color: #ff389c;" text="Rates" textFill="#075441">
          <font>
             <Font name="Lucida Sans Demibold Italic" size="27.0" />
          </font>
+         <effect>
+            <Lighting diffuseConstant="1.33">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
       </Button>
-      <Button layoutX="1395.0" layoutY="16.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="141.0" style="-fx-background-color: #13f0d2; -fx-background-radius: 50;" text="Login / Sign Up" textFill="#7300ff">
+      <Button fx:id="loginButton" layoutX="1439.0" layoutY="16.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #e1f505; -fx-background-radius: 50;" text="Login / Sign Up" textFill="#7300ff">
          <font>
-            <Font name="Mj_Adell" size="18.0" />
+            <Font name="Mj_Adell" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="1278.0" layoutY="16.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="77.0" style="-fx-background-color: #0fbfa8; -fx-background-radius: 50;" text="Home" textFill="#7300ff">
+      <Button fx:id="homeButton" layoutX="1347.0" layoutY="16.0" mnemonicParsing="false" onAction="#onHomeButtonClicked" prefHeight="28.0" prefWidth="55.0" style="-fx-background-color: #bbcc02; -fx-background-radius: 50;" text="Home" textFill="#7300ff">
          <font>
-            <Font name="Mj_Adell" size="18.0" />
+            <Font name="Mj_Adell" size="12.0" />
          </font>
       </Button>
-      <Label layoutX="1361.0" layoutY="24.0" prefHeight="14.0" prefWidth="27.0" text="&lt;&lt;" textFill="#ff6600">
+      <Label layoutX="1412.0" layoutY="21.0" prefHeight="14.0" prefWidth="27.0" text="&lt;&lt;" textFill="#fcff00">
          <font>
-            <Font name="Lucida Sans Demibold Roman" size="20.0" />
+            <Font name="Lucida Sans Demibold Roman" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="47.0" layoutY="-12.0" prefHeight="74.0" prefWidth="364.0" text="Currencies" textAlignment="CENTER" textFill="#00fffa">
+      <Label layoutX="69.0" layoutY="-12.0" prefHeight="49.0" prefWidth="338.0" text="Currencies" textAlignment="CENTER">
          <font>
-            <Font name="Aparajita" size="70.0" />
+            <Font name="Gabriola" size="80.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="0.004629629664123058" blue="0.004629629664123058" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.3020134228187919">
+                     <color>
+                        <Color red="0.9351698756217957" green="1.0" blue="0.3799999952316284" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5283393354067768">
+                     <color>
+                        <Color green="0.7763158082962036" blue="0.20701754093170166" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.7506138484203634">
+                     <color>
+                        <Color green="0.800000011920929" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7907006144523621" green="0.3799999952316284" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="49.0" fitWidth="55.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/oie_15210232QhR36UT.gif" />
+         </image>
+      </ImageView>
+      <Button layoutX="129.0" layoutY="514.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="174.0" style="-fx-background-color: yellow; -fx-background-radius: 10;" text="TOMAN">
+         <font>
+            <Font name="Lucida Fax Demibold Italic" size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow height="77.09" radius="38.045" width="77.09">
+               <color>
+                  <Color red="1.0" />
+               </color>
+            </InnerShadow>
+         </effect></Button>
+      <Button layoutX="130.0" layoutY="352.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="174.0" style="-fx-background-color: yellow; -fx-background-radius: 10;" text="USD" textAlignment="CENTER">
+         <font>
+            <Font name="Lucida Fax Demibold Italic" size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow height="77.09" radius="38.045" width="77.09">
+               <color>
+                  <Color red="1.0" />
+               </color>
+            </InnerShadow>
+         </effect></Button>
+      <Button layoutX="129.0" layoutY="432.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="174.0" style="-fx-background-color: yellow; -fx-background-radius: 10;" text="EUR">
+         <font>
+            <Font name="Lucida Fax Demibold Italic" size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow height="77.09" radius="38.045" width="77.09">
+               <color>
+                  <Color red="1.0" />
+               </color>
+            </InnerShadow>
+         </effect></Button>
+      <Button layoutX="130.0" layoutY="598.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="174.0" style="-fx-background-color: yellow; -fx-background-radius: 10;" text="YEN">
+         <font>
+            <Font name="Lucida Fax Demibold Italic" size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow height="77.09" radius="38.045" width="77.09">
+               <color>
+                  <Color red="1.0" />
+               </color>
+            </InnerShadow>
+         </effect></Button>
+      <Button layoutX="129.0" layoutY="678.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="174.0" style="-fx-background-color: yellow; -fx-background-radius: 10;" text="GBP">
+         <font>
+            <Font name="Lucida Fax Demibold Italic" size="20.0" />
+         </font>
+         <effect>
+            <InnerShadow height="77.09" radius="38.045" width="77.09">
+               <color>
+                  <Color red="1.0" />
+               </color></InnerShadow>
+         </effect></Button>
+      <Line endX="191.0" layoutX="159.0" layoutY="86.0" startX="-94.0" stroke="#13c6d7" strokeWidth="3.0" />
+      <Label fx:id="ratesOfUSDbutton" layoutX="466.0" layoutY="352.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #a0a4fa; -fx-background-radius: 10;" textAlignment="JUSTIFY">
+         <effect>
+            <InnerShadow height="37.8" radius="23.0325" width="56.33">
+               <color>
+                  <Color green="1.0" blue="0.6666666865348816" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font name="Elephant" size="23.0" />
          </font>
       </Label>
-      <Line endX="149.0" layoutX="163.0" layoutY="75.0" startX="-128.0" stroke="#ffcd00" strokeWidth="3.0" />
-      <Sphere layoutX="23.0" layoutY="37.0" nodeOrientation="LEFT_TO_RIGHT" radius="10.0" />
-      <Button layoutX="101.0" layoutY="352.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="231.0" style="-fx-background-color: #dfdff5; -fx-border-color: yellow; -fx-border-radius: 10; -fx-background-radius: 10;" text="BTC">
+      <Label fx:id="ratesOfEURbutton" layoutX="466.0" layoutY="432.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #a0a4fa; -fx-background-radius: 10;">
+         <effect>
+            <InnerShadow height="37.8" radius="23.0325" width="56.33">
+               <color>
+                  <Color green="1.0" blue="0.6666666865348816" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Label fx:id="ratesOfTOMANbutton" layoutX="466.0" layoutY="514.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #a0a4fa; -fx-background-radius: 10;">
+         <effect>
+            <InnerShadow height="37.8" radius="23.0325" width="56.33">
+               <color>
+                  <Color green="1.0" blue="0.6666666865348816" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Label fx:id="ratesOfYENbutton" layoutX="466.0" layoutY="598.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #a0a4fa; -fx-background-radius: 10;">
+         <effect>
+            <InnerShadow height="47.07" radius="25.35" width="56.33">
+               <color>
+                  <Color green="1.0" blue="0.6666666865348816" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Label fx:id="ratesOfGBPbutton" layoutX="466.0" layoutY="678.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #a0a4fa; -fx-background-radius: 10;">
+         <effect>
+            <InnerShadow height="37.8" radius="23.0325" width="56.33">
+               <color>
+                  <Color green="1.0" blue="0.6666666865348816" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <ImageView fitHeight="55.0" fitWidth="77.0" layoutX="64.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/dollar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="64.0" layoutY="429.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/euro.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="64.0" layoutY="511.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/rial.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="64.0" layoutY="595.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/yen.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="64.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/pound.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="730.0" layoutY="352.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #0287cf; -fx-background-radius: 10;" textFill="RED">
+         <effect>
+            <InnerShadow height="19.27" radius="18.4" width="56.33">
+               <color>
+                  <Color green="0.04458598792552948" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
          <font>
-            <Font name="Miriam Fixed" size="30.0" />
+            <Font name="Elephant" size="23.0" />
          </font>
-      </Button>
-      <Button layoutX="101.0" layoutY="421.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="231.0" style="-fx-background-color: #dfdff5; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: purple;" text="DOGE">
+      </Label>
+      <Label layoutX="730.0" layoutY="432.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #0287cf; -fx-background-radius: 10;">
+         <effect>
+            <InnerShadow height="19.27" radius="18.4" width="56.33">
+               <color>
+                  <Color green="0.04458598792552948" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Label layoutX="730.0" layoutY="514.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #0287cf; -fx-background-radius: 10;">
+         <effect>
+            <InnerShadow height="19.27" radius="18.4" width="56.33">
+               <color>
+                  <Color green="0.04458598792552948" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Label layoutX="730.0" layoutY="598.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #0287cf; -fx-background-radius: 10;">
+         <effect>
+            <InnerShadow height="19.27" radius="18.4" width="56.33">
+               <color>
+                  <Color green="0.04458598792552948" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Label layoutX="730.0" layoutY="678.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #0287cf; -fx-background-radius: 10;">
+         <effect>
+            <InnerShadow height="19.27" radius="18.4" width="56.33">
+               <color>
+                  <Color green="0.04458598792552948" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Label layoutX="1012.0" layoutY="352.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #72f7b5; -fx-background-radius: 10;">
+         <effect>
+            <Lighting diffuseConstant="0.93" specularConstant="0.37">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="1012.0" layoutY="432.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #72f7b5; -fx-background-radius: 10;">
+         <effect>
+            <Lighting diffuseConstant="0.93">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="1012.0" layoutY="514.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #72f7b5; -fx-background-radius: 10;">
+         <effect>
+            <Lighting diffuseConstant="0.93">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="1012.0" layoutY="598.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #72f7b5; -fx-background-radius: 10;">
+         <effect>
+            <Lighting diffuseConstant="0.93">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="1012.0" layoutY="678.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #72f7b5; -fx-background-radius: 10;">
+         <effect>
+            <Lighting diffuseConstant="0.93">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="1304.0" layoutY="352.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #f55b65; -fx-background-radius: 10;">
+         <effect>
+            <Lighting diffuseConstant="1.33">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="1304.0" layoutY="432.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #f55b65; -fx-background-radius: 10;">
+         <effect>
+            <Lighting diffuseConstant="1.33">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="1304.0" layoutY="514.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #f55b65; -fx-background-radius: 10;">
+         <effect>
+            <Lighting diffuseConstant="1.33">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="1304.0" layoutY="598.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #f55b65; -fx-background-radius: 10;">
+         <effect>
+            <Lighting diffuseConstant="1.33">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="1304.0" layoutY="678.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #f55b65; -fx-background-radius: 10;">
+         <effect>
+            <Lighting diffuseConstant="1.33">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label layoutX="689.0" layoutY="42.0" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #fad4fa; -fx-background-radius: 20;" text="      12:54:36">
+         <effect>
+            <InnerShadow choke="1.0" height="16.48" radius="7.74" width="16.48">
+               <color>
+                  <Color green="1.0" blue="0.7707006335258484" />
+               </color>
+            </InnerShadow>
+         </effect>
          <font>
-            <Font name="Miriam Fixed" size="30.0" />
-         </font></Button>
+            <Font name="Aparajita Bold" size="23.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.28859060402684544">
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6644295302013421">
+                     <color>
+                        <Color red="0.0833333358168602" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.0833333358168602" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="41.0" fitWidth="37.0" layoutX="652.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/oie_513049bJ2h36Y5.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="689.0" layoutY="17.0" prefHeight="37.0" prefWidth="122.0" style="-fx-background-color: #eff5b0; -fx-background-radius: 20;" text="      2024/7/5">
+         <effect>
+            <InnerShadow choke="1.0" height="16.48" radius="7.74" width="16.48">
+               <color>
+                  <Color green="1.0" blue="0.7707006335258484" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font name="Aparajita Bold" size="23.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5268456375838925">
+                     <color>
+                        <Color red="1.0" blue="0.6305732727050781" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9194630872483219">
+                     <color>
+                        <Color red="0.0833333358168602" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.0833333358168602" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
    </children>
 </AnchorPane>
