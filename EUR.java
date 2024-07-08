@@ -9,7 +9,6 @@ import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.sql.*;
@@ -21,7 +20,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class USD extends Thread implements Initializable {
+public class EUR extends Thread implements Initializable {
 
     @FXML
     Button button60S;
@@ -83,14 +82,14 @@ public class USD extends Thread implements Initializable {
                         Statement statement = connection.createStatement();
                         statement.execute("use cryptocurrency");
 
-                        ResultSet resultSet = statement.executeQuery("SELECT Time, USD FROM book1");
+                        ResultSet resultSet = statement.executeQuery("SELECT Time, EUR FROM book1");
 
                         LocalTime now = LocalTime.now();
                         String currentTime = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
                         while (resultSet.next()) {
                             if (currentTime.equals(resultSet.getTime("Time").toString())) {
-                                CurrentPrice.setText(resultSet.getString("USD"));
+                                CurrentPrice.setText(resultSet.getString("EUR"));
                                 sleep(1000);
                             }
                         }
@@ -123,7 +122,7 @@ public class USD extends Thread implements Initializable {
                         Statement statement = connection.createStatement();
                         statement.execute("use cryptocurrency");
 
-                        ResultSet resultSet = statement.executeQuery("SELECT Time, USD FROM book1");
+                        ResultSet resultSet = statement.executeQuery("SELECT Time, EUR FROM book1");
 
                         LocalTime now = LocalTime.now();
                         String currentTime = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
@@ -138,7 +137,7 @@ public class USD extends Thread implements Initializable {
                             if (currentTime.equals(resultSet.getTime("Time").toString())) {
                                 while (!formattedNewTime.equals(resultSet.getTime("Time").toString())) {
                                     // Convert the USD value to a double
-                                    price += resultSet.getDouble("USD");
+                                    price += resultSet.getDouble("EUR");
                                     sleep(60000);
                                     resultSet.next();
                                 }
@@ -146,7 +145,7 @@ public class USD extends Thread implements Initializable {
                                 prices[i] = price;
                                 if (prices[i-1] > 0){
                                     percentageOfDailyChanges.setText((prices[i] - prices[i - 1]) * 100 / prices[i - 1] + "%");
-                                                                    }
+                                }
                                 i++;
                             }
                             else{
@@ -164,18 +163,19 @@ public class USD extends Thread implements Initializable {
         }, 0, intervalInSeconds * 1000);
 
 
-        button60S.setOnMouseEntered(e -> button60S.setStyle("-fx-background-color: #00a365;-fx-background-radius: 50;"));
-        button60S.setOnMouseExited(e -> button60S.setStyle("-fx-background-color: #00ffb3;-fx-background-radius: 50;"));
-        button1H.setOnMouseEntered(e -> button1H.setStyle("-fx-background-color: #00a365;-fx-background-radius: 50;"));
-        button1H.setOnMouseExited(e -> button1H.setStyle("-fx-background-color:  #00ffb3;-fx-background-radius: 50;"));
-        button24H.setOnMouseEntered(e -> button24H.setStyle("-fx-background-color: #00a365;-fx-background-radius: 50;"));
-        button24H.setOnMouseExited(e -> button24H.setStyle("-fx-background-color:  #00ffb3;-fx-background-radius: 50;"));
-        button7D.setOnMouseEntered(e -> button7D.setStyle("-fx-background-color: #00a365;-fx-background-radius: 50;"));
-        button7D.setOnMouseExited(e -> button7D.setStyle("-fx-background-color:  #00ffb3;-fx-background-radius: 50;"));
-        button1M.setOnMouseEntered(e -> button1M.setStyle("-fx-background-color: #00a365;-fx-background-radius: 50;"));
-        button1M.setOnMouseExited(e -> button1M.setStyle("-fx-background-color:  #00ffb3;-fx-background-radius: 50;"));
-        button1Y.setOnMouseEntered(e -> button1Y.setStyle("-fx-background-color: #00a365;-fx-background-radius: 50;"));
-        button1Y.setOnMouseExited(e -> button1Y.setStyle("-fx-background-color:  #00ffb3;-fx-background-radius: 50;"));
+
+        button60S.setOnMouseEntered(e -> button60S.setStyle("-fx-background-color: #eb5802;-fx-background-radius: 50;"));
+        button60S.setOnMouseExited(e -> button60S.setStyle("-fx-background-color:  #f5c842;-fx-background-radius: 50;"));
+        button1H.setOnMouseEntered(e -> button1H.setStyle("-fx-background-color: #eb5802;-fx-background-radius: 50;"));
+        button1H.setOnMouseExited(e -> button1H.setStyle("-fx-background-color:   #f5c842;-fx-background-radius: 50;"));
+        button24H.setOnMouseEntered(e -> button24H.setStyle("-fx-background-color: #eb5802;-fx-background-radius: 50;"));
+        button24H.setOnMouseExited(e -> button24H.setStyle("-fx-background-color:   #f5c842;-fx-background-radius: 50;"));
+        button7D.setOnMouseEntered(e -> button7D.setStyle("-fx-background-color: #eb5802;-fx-background-radius: 50;"));
+        button7D.setOnMouseExited(e -> button7D.setStyle("-fx-background-color:   #f5c842;-fx-background-radius: 50;"));
+        button1M.setOnMouseEntered(e -> button1M.setStyle("-fx-background-color: #eb5802;-fx-background-radius: 50;"));
+        button1M.setOnMouseExited(e -> button1M.setStyle("-fx-background-color:   #f5c842;-fx-background-radius: 50;"));
+        button1Y.setOnMouseEntered(e -> button1Y.setStyle("-fx-background-color:#eb5802;-fx-background-radius: 50;"));
+        button1Y.setOnMouseExited(e -> button1Y.setStyle("-fx-background-color:   #f5c842;-fx-background-radius: 50;"));
 
         button60S.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -189,7 +189,7 @@ public class USD extends Thread implements Initializable {
 
                 AreaChartOf60S.setAnimated(false);
                 AreaChartOf60S.getXAxis().setLabel("Time (Seconds)");
-                AreaChartOf60S.getYAxis().setLabel("USD Price");
+                AreaChartOf60S.getYAxis().setLabel("EUR Price");
                 AreaChartOf60S.getData().add(new XYChart.Series<>());
 
                 fetchAndUpdateData60S();
@@ -207,7 +207,7 @@ public class USD extends Thread implements Initializable {
 
                 AreaChartOf1H.setAnimated(false);
                 AreaChartOf1H.getXAxis().setLabel("Time (Minutes)");
-                AreaChartOf1H.getYAxis().setLabel("USD Price");
+                AreaChartOf1H.getYAxis().setLabel("EUR Price");
                 AreaChartOf1H.getData().add(new XYChart.Series<>());
 
                 fetchAndUpdateData1H();
@@ -225,7 +225,7 @@ public class USD extends Thread implements Initializable {
 
                 AreaChartOf24H.setAnimated(false);
                 AreaChartOf24H.getXAxis().setLabel("Time (Hours)");
-                AreaChartOf24H.getYAxis().setLabel("USD Price");
+                AreaChartOf24H.getYAxis().setLabel("EUR Price");
                 AreaChartOf24H.getData().add(new XYChart.Series<>());
 
                 fetchAndUpdateData24H();
@@ -243,7 +243,7 @@ public class USD extends Thread implements Initializable {
 
                 AreaChartOf7D.setAnimated(false);
                 AreaChartOf7D.getXAxis().setLabel("Time (Days)");
-                AreaChartOf7D.getYAxis().setLabel("USD Price");
+                AreaChartOf7D.getYAxis().setLabel("EUR Price");
                 AreaChartOf7D.getData().add(new XYChart.Series<>());
 
                 fetchAndUpdateData7D();
@@ -261,7 +261,7 @@ public class USD extends Thread implements Initializable {
 
                 AreaChartOf1M.setAnimated(false);
                 AreaChartOf1M.getXAxis().setLabel("Time (Weeks)");
-                AreaChartOf1M.getYAxis().setLabel("USD Price");
+                AreaChartOf1M.getYAxis().setLabel("EUR Price");
                 AreaChartOf1M.getData().add(new XYChart.Series<>());
 
                 fetchAndUpdateData1M();
@@ -279,7 +279,7 @@ public class USD extends Thread implements Initializable {
 
                 AreaChartOf1Y.setAnimated(false);
                 AreaChartOf1Y.getXAxis().setLabel("Time (Months)");
-                AreaChartOf1Y.getYAxis().setLabel("USD Price");
+                AreaChartOf1Y.getYAxis().setLabel("EUR Price");
                 AreaChartOf1Y.getData().add(new XYChart.Series<>());
 
                 fetchAndUpdateData1Y();
@@ -312,7 +312,7 @@ public class USD extends Thread implements Initializable {
             Statement statement = connection.createStatement();
             statement.execute("use cryptocurrency");
 
-            ResultSet resultSet = statement.executeQuery("SELECT Time, USD FROM book1");
+            ResultSet resultSet = statement.executeQuery("SELECT Time, EUR FROM book1");
 
             // Update the chart with data
             XYChart.Series<Number, Number> dataSeries = AreaChartOf60S.getData().getFirst(); // Get the series
@@ -324,8 +324,8 @@ public class USD extends Thread implements Initializable {
             while (resultSet.next()) {
                 if (currentTime.equals(resultSet.getTime("Time").toString())) {
                     // Convert the USD value to a double
-                    double price = resultSet.getDouble("USD");
-                    CurrentPrice.setText(resultSet.getString("USD"));
+                    double price = resultSet.getDouble("EUR");
+                    CurrentPrice.setText(resultSet.getString("EUR"));
                     for (int i = 0; i < 60; i++) {
                         // Add data to the chart
                         dataSeries.getData().add(new XYChart.Data<>(i++, price));
@@ -369,7 +369,7 @@ public class USD extends Thread implements Initializable {
             Statement statement = connection.createStatement();
             statement.execute("use cryptocurrency");
 
-            ResultSet resultSet = statement.executeQuery("SELECT Time, USD FROM book1");
+            ResultSet resultSet = statement.executeQuery("SELECT Time, EUR FROM book1");
 
             // Update the chart with data
             XYChart.Series<Number, Number> dataSeries = AreaChartOf1H.getData().getFirst(); // Get the series
@@ -382,8 +382,8 @@ public class USD extends Thread implements Initializable {
             while (resultSet.next()) {
                 if (currentTime.equals(resultSet.getTime("Time").toString())) {
                     // Convert the USD value to a double
-                    double price = resultSet.getDouble("USD");
-                    CurrentPrice.setText(resultSet.getString("USD"));
+                    double price = resultSet.getDouble("EUR");
+                    CurrentPrice.setText(resultSet.getString("EUR"));
                     // Add data to the chart
                     dataSeries.getData().add(new XYChart.Data<>(i++, price));
                     sleep(60000);
@@ -424,7 +424,7 @@ public class USD extends Thread implements Initializable {
             Statement statement = connection.createStatement();
             statement.execute("use cryptocurrency");
 
-            ResultSet resultSet = statement.executeQuery("SELECT Time, USD FROM book1");
+            ResultSet resultSet = statement.executeQuery("SELECT Time, EUR FROM book1");
 
             // Update the chart with data
             XYChart.Series<Number, Number> dataSeries = AreaChartOf24H.getData().getFirst(); // Get the series
@@ -442,8 +442,8 @@ public class USD extends Thread implements Initializable {
                     double price = 0;
                     while (!formattedNewTime.equals(resultSet.getTime("Time").toString())) {
                         // Convert the USD value to a double
-                        price += resultSet.getDouble("USD");
-                        CurrentPrice.setText(resultSet.getString("USD"));
+                        price += resultSet.getDouble("EUR");
+                        CurrentPrice.setText(resultSet.getString("EUR"));
                         sleep(60000);
                         resultSet.next();
                     }
@@ -487,7 +487,7 @@ public class USD extends Thread implements Initializable {
             Statement statement = connection.createStatement();
             statement.execute("use cryptocurrency");
 
-            ResultSet resultSet = statement.executeQuery("SELECT Time, USD FROM book1");
+            ResultSet resultSet = statement.executeQuery("SELECT Time, EUR FROM book1");
 
             // Update the chart with data
             XYChart.Series<Number, Number> dataSeries = AreaChartOf7D.getData().getFirst(); // Get the series
@@ -505,8 +505,8 @@ public class USD extends Thread implements Initializable {
                 if (currentTime.equals(resultSet.getTime("Time").toString())) {
                     while (!formattedNewTime.equals(resultSet.getTime("Time").toString())) {
                         // Convert the USD value to a double
-                        price += resultSet.getDouble("USD");
-                        CurrentPrice.setText(resultSet.getString("USD"));
+                        price += resultSet.getDouble("EUR");
+                        CurrentPrice.setText(resultSet.getString("EUR"));
                         sleep(60000);
                         resultSet.next();
                         if (!resultSet.next()) price += 0;
@@ -550,7 +550,7 @@ public class USD extends Thread implements Initializable {
             Statement statement = connection.createStatement();
             statement.execute("use cryptocurrency");
 
-            ResultSet resultSet = statement.executeQuery("SELECT Time, USD FROM book1");
+            ResultSet resultSet = statement.executeQuery("SELECT Time, EUR FROM book1");
 
             // Update the chart with data
             XYChart.Series<Number, Number> dataSeries = AreaChartOf1M.getData().getFirst(); // Get the series
@@ -568,8 +568,8 @@ public class USD extends Thread implements Initializable {
                     double price = 0;
                     while (!formattedNewTime.equals(resultSet.getTime("Time").toString())) {
                         // Convert the USD value to a double
-                        price += resultSet.getDouble("USD");
-                        CurrentPrice.setText(resultSet.getString("USD"));
+                        price += resultSet.getDouble("EUR");
+                        CurrentPrice.setText(resultSet.getString("EUR"));
                         sleep(60000);
                         resultSet.next();
                         if (!resultSet.next()) price += 0;
@@ -614,7 +614,7 @@ public class USD extends Thread implements Initializable {
             Statement statement = connection.createStatement();
             statement.execute("use cryptocurrency");
 
-            ResultSet resultSet = statement.executeQuery("SELECT Time, USD FROM book1");
+            ResultSet resultSet = statement.executeQuery("SELECT Time, EUR FROM book1");
 
             // Update the chart with data
             XYChart.Series<Number, Number> dataSeries = AreaChartOf1Y.getData().getFirst(); // Get the series
@@ -632,8 +632,8 @@ public class USD extends Thread implements Initializable {
                     double price = 0;
                     while (!formattedNewTime.equals(resultSet.getTime("Time").toString())) {
                         // Convert the USD value to a double
-                        price += resultSet.getDouble("USD");
-                        CurrentPrice.setText(resultSet.getString("USD"));
+                        price += resultSet.getDouble("EUR");
+                        CurrentPrice.setText(resultSet.getString("EUR"));
                         sleep(60000);
                         resultSet.next();
                     }
