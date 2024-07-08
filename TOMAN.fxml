@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1550.0" style="-fx-background-color: #000129;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.final_project.TOMAN">
+   <children>
+      <Label layoutX="108.0" layoutY="-3.0" prefHeight="133.0" prefWidth="319.0" text="TOMAN">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.7833333611488342" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.3120805369127516">
+                     <color>
+                        <Color green="0.7833333611488342" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.7315436241610738">
+                     <color>
+                        <Color red="0.08063677698373795" green="0.017787523567676544" blue="0.9605262875556946" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.08063677698373795" green="0.017787523567676544" blue="0.9605262875556946" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Aparajita Bold" size="96.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="163.0" prefHeight="607.0" prefWidth="514.0" style="-fx-background-color: #1c1c1c; -fx-background-radius: 20;">
+         <effect>
+            <InnerShadow choke="0.5" height="95.0" radius="47.0" width="95.0">
+               <color>
+                  <Color green="0.19298245012760162" blue="0.5789473652839661" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <ImageView fitHeight="68.0" fitWidth="56.0" layoutX="35.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/icons8-combo-chart.gif" />
+         </image>
+      </ImageView>
+      <Line endX="408.0" layoutX="136.0" layoutY="107.0" startX="-100.0" stroke="#00fbff" />
+      <Label layoutX="600.0" layoutY="114.0" prefHeight="656.0" prefWidth="911.0" style="-fx-background-color: #1c1c1c; -fx-background-radius: 20;">
+         <effect>
+            <InnerShadow choke="0.5" height="95.0" radius="47.0" width="95.0">
+               <color>
+                  <Color green="0.21419107913970947" blue="0.5600000023841858" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Button fx:id="button60S" layoutX="663.0" layoutY="21.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="81.0" style="-fx-background-color: #2671b5; -fx-background-radius: 50;" text="60 S" textFill="WHITE">
+         <font>
+            <Font name="Aparajita Bold" size="27.0" />
+         </font>
+      </Button>
+      <Button fx:id="button24H" layoutX="940.0" layoutY="21.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="81.0" style="-fx-background-color: #2671b5; -fx-background-radius: 50;" text="24 H" textFill="WHITE">
+         <font>
+            <Font name="Aparajita Bold" size="27.0" />
+         </font>
+      </Button>
+      <Button fx:id="button7D" layoutX="1073.0" layoutY="21.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="81.0" style="-fx-background-color: #2671b5; -fx-background-radius: 50;" text="7 D" textFill="WHITE">
+         <font>
+            <Font name="Aparajita Bold" size="27.0" />
+         </font>
+      </Button>
+      <Button fx:id="button1M" layoutX="1211.0" layoutY="21.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="81.0" style="-fx-background-color: #2671b5; -fx-background-radius: 50;" text="1 M" textFill="WHITE">
+         <font>
+            <Font name="Aparajita Bold" size="27.0" />
+         </font>
+      </Button>
+      <Button fx:id="button1Y" layoutX="1346.0" layoutY="21.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="81.0" style="-fx-background-color: #2671b5; -fx-background-radius: 50;" text="1 Y" textFill="WHITE">
+         <font>
+            <Font name="Aparajita Bold" size="27.0" />
+         </font>
+      </Button>
+      <AreaChart fx:id="AreaChartOf60S" alternativeColumnFillVisible="true" layoutX="624.0" layoutY="175.0" prefHeight="581.0" prefWidth="864.0" title="Minute rate" visible="false">
+        <xAxis>
+          <NumberAxis autoRanging="false" minorTickLength="1.0" side="BOTTOM" tickLabelGap="1.0" tickUnit="1.0" upperBound="60.0" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis autoRanging="false" minorTickLength="0.01" side="LEFT" tickLabelGap="1.0" tickUnit="10000.0" upperBound="70000.0" />
+        </yAxis>
+         <effect>
+            <InnerShadow choke="0.16" height="95.13" radius="50.03" width="106.99">
+               <color>
+                  <Color green="0.9044585824012756" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </AreaChart>
+      <Label fx:id="CurrentPrice" alignment="CENTER" layoutX="90.0" layoutY="226.0" prefHeight="110.0" prefWidth="196.0" textFill="#ff3db5">
+         <font>
+            <Font name="Aparajita Bold" size="59.0" />
+         </font>
+      </Label>
+      <Label fx:id="percentageOfDailyChanges" layoutX="365.0" layoutY="277.0" prefHeight="37.0" prefWidth="92.0" textFill="#fcff00">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+      <Label layoutX="290.0" layoutY="282.0" prefHeight="24.0" prefWidth="43.0" text="USD" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="swapButton" layoutX="156.0" layoutY="642.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="274.0" style="-fx-background-color: #00ffee; -fx-background-radius: 10;" text="Swap">
+         <font>
+            <Font name="Californian FB Bold" size="22.0" />
+         </font>
+      </Button>
+      <Label layoutX="111.0" layoutY="391.0" prefHeight="16.0" prefWidth="109.0" text="Date of issue" textFill="WHITE" />
+      <Label layoutX="352.0" layoutY="391.0" text="Stock turnover" textFill="WHITE" />
+      <Label fx:id="Date" layoutX="108.0" layoutY="428.0" prefHeight="37.0" prefWidth="129.0" textFill="#fc81cd">
+         <font>
+            <Font name="Arrows1" size="19.0" />
+         </font></Label>
+      <Label fx:id="StockTurnover" layoutX="352.0" layoutY="428.0" prefHeight="37.0" prefWidth="129.0" textFill="#fc81cd">
+         <font>
+            <Font name="Arrows1" size="19.0" />
+         </font></Label>
+      <Button layoutX="90.0" layoutY="536.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="189.0" style="-fx-background-color: #0c869c;" text="Requests from other users" />
+      <Button layoutX="311.0" layoutY="536.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="189.0" style="-fx-background-color: #0c869c;" text="Latest deals" />
+      <Label fx:id="Time" alignment="CENTER" layoutX="663.0" layoutY="145.0" prefHeight="37.0" prefWidth="117.0" style="-fx-background-color: #02217d; -fx-background-radius: 20;" textFill="#fcfcfc">
+         <font>
+            <Font name="Arrows1" size="13.0" />
+         </font></Label>
+      <Button fx:id="button1H" layoutX="806.0" layoutY="21.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="81.0" style="-fx-background-color: #2671b5; -fx-background-radius: 50;" text="1 H" textFill="WHITE">
+         <font>
+            <Font name="Aparajita Bold" size="27.0" />
+         </font>
+      </Button>
+      <AreaChart fx:id="AreaChartOf1H" alternativeColumnFillVisible="true" layoutX="624.0" layoutY="176.0" prefHeight="581.0" prefWidth="864.0" title="Hourly rate" visible="false">
+         <xAxis>
+            <NumberAxis autoRanging="false" minorTickLength="1.0" side="BOTTOM" tickLabelGap="1.0" tickUnit="1.0" upperBound="60.0" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis autoRanging="false" minorTickLength="0.01" side="LEFT" tickLabelGap="1.0" tickUnit="10000.0" upperBound="70000.0" />
+         </yAxis>
+         <effect>
+            <InnerShadow choke="0.16" height="95.13" radius="50.03" width="106.99">
+               <color>
+                  <Color green="0.9044585824012756" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </AreaChart>
+      <AreaChart fx:id="AreaChartOf24H" alternativeColumnFillVisible="true" layoutX="624.0" layoutY="175.0" prefHeight="581.0" prefWidth="864.0" title="Daily rate" visible="false">
+         <xAxis>
+            <NumberAxis autoRanging="false" minorTickLength="1.0" side="BOTTOM" tickLabelGap="1.0" tickUnit="1.0" upperBound="24.0" visible="false" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis autoRanging="false" minorTickLength="0.01" side="LEFT" tickLabelGap="1.0" tickUnit="10000.0" upperBound="70000.0" />
+         </yAxis>
+         <effect>
+            <InnerShadow choke="0.16" height="95.13" radius="50.03" width="106.99">
+               <color>
+                  <Color green="0.9044585824012756" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </AreaChart>
+      <AreaChart fx:id="AreaChartOf7D" alternativeColumnFillVisible="true" layoutX="624.0" layoutY="175.0" prefHeight="581.0" prefWidth="864.0" title="Weekly rate" visible="false">
+         <xAxis>
+            <NumberAxis autoRanging="false" minorTickLength="1.0" side="BOTTOM" tickLabelGap="1.0" tickUnit="1.0" upperBound="7.0" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis autoRanging="false" minorTickLength="0.01" side="LEFT" tickLabelGap="1.0" tickUnit="10000.0" upperBound="70000.0" />
+         </yAxis>
+         <effect>
+            <InnerShadow choke="0.16" height="95.13" radius="50.03" width="106.99">
+               <color>
+                  <Color green="0.9044585824012756" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </AreaChart>
+      <AreaChart fx:id="AreaChartOf1M" alternativeColumnFillVisible="true" layoutX="624.0" layoutY="175.0" prefHeight="581.0" prefWidth="864.0" title="Monthly rate" visible="false">
+         <xAxis>
+            <NumberAxis autoRanging="false" minorTickLength="1.0" side="BOTTOM" tickLabelGap="1.0" tickUnit="1.0" upperBound="4.0" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis autoRanging="false" minorTickLength="0.01" side="LEFT" tickLabelGap="1.0" tickUnit="10000.0" upperBound="70000.0" />
+         </yAxis>
+         <effect>
+            <InnerShadow choke="0.16" height="95.13" radius="50.03" width="106.99">
+               <color>
+                  <Color green="0.9044585824012756" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </AreaChart>
+      <AreaChart fx:id="AreaChartOf1Y" alternativeColumnFillVisible="true" layoutX="624.0" layoutY="175.0" prefHeight="581.0" prefWidth="864.0" title="Annual rate" visible="false">
+         <xAxis>
+            <NumberAxis autoRanging="false" minorTickLength="1.0" side="BOTTOM" tickLabelGap="1.0" tickUnit="1.0" upperBound="12.0" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis autoRanging="false" minorTickLength="0.01" side="LEFT" tickLabelGap="1.0" tickUnit="10000.0" upperBound="70000.0" />
+         </yAxis>
+         <effect>
+            <InnerShadow choke="0.16" height="95.13" radius="50.03" width="106.99">
+               <color>
+                  <Color green="0.9044585824012756" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </AreaChart>
+   </children>
+</AnchorPane>
