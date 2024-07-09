@@ -19,6 +19,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class USD extends Thread implements Initializable {
@@ -91,13 +92,12 @@ public class USD extends Thread implements Initializable {
                         while (resultSet.next()) {
                             if (currentTime.equals(resultSet.getTime("Time").toString())) {
                                 CurrentPrice.setText(resultSet.getString("USD"));
-                                sleep(1000);
                             }
                         }
                         resultSet.close();
                         statement.close();
                         connection.close();
-                    } catch (ClassNotFoundException | SQLException | InterruptedException e) {
+                    } catch (ClassNotFoundException | SQLException e) {
                         throw new RuntimeException(e);
                     }
                 });
@@ -316,23 +316,22 @@ public class USD extends Thread implements Initializable {
 
             // Update the chart with data
             XYChart.Series<Number, Number> dataSeries = AreaChartOf60S.getData().getFirst(); // Get the series
-            dataSeries.getData().clear(); // Clear existing data
+            dataSeries.getData().clear();
 
             LocalTime now = LocalTime.now();
-            String currentTime = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:36");
 
             while (resultSet.next()) {
-                if (currentTime.equals(resultSet.getTime("Time").toString())) {
-                    // Convert the USD value to a double
-                    double price = resultSet.getDouble("USD");
-                    CurrentPrice.setText(resultSet.getString("USD"));
-                    for (int i = 0; i < 60; i++) {
-                        // Add data to the chart
-                        dataSeries.getData().add(new XYChart.Data<>(i++, price));
+                // Add data to the chart
+                double price = resultSet.getDouble("USD");
+                if (now.format(dtf).equals(resultSet.getTime("TIME").toString())) {
+                    for (int j = 0; j < 60; j++) {
+                        dataSeries.getData().add(new XYChart.Data<>(j, resultSet.getDouble("USD")));
+//                        System.out.println(price);
+//                        System.out.print(j);
                         sleep(1000);
                     }
                 }
-                dataSeries.getData().clear();
             }
             resultSet.close();
             statement.close();
@@ -361,6 +360,7 @@ public class USD extends Thread implements Initializable {
         }, 0, intervalInSeconds * 1000);
     }
 
+    public static int i = 0;
     private void fetchAndAddData1H() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -376,19 +376,38 @@ public class USD extends Thread implements Initializable {
             dataSeries.getData().clear(); // Clear existing data
 
             LocalTime now = LocalTime.now();
-            String currentTime = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:36");
 
-            int i = 0;
+//            boolean sw = false;
+//            while (resultSet.next()){
+//                if (now.format(dtf).equals(resultSet.getTime("Time").toString())) {
+////                    System.out.println(resultSet.getDouble("USD "));
+////                    System.out.print(i++);
+//                    dataSeries.getData().add(new XYChart.Data<>(i++, resultSet.getDouble("USD")));
+//                    sw = true;
+//                }
+//                if (sw == true){
+//                    sleep(60000);
+//                    if (i == 60){
+//                        i = 0;
+//                    }
+//                    sw = false;
+//                }
+//            }
+
             while (resultSet.next()) {
-                if (currentTime.equals(resultSet.getTime("Time").toString())) {
-                    // Convert the USD value to a double
-                    double price = resultSet.getDouble("USD");
-                    CurrentPrice.setText(resultSet.getString("USD"));
-                    // Add data to the chart
-                    dataSeries.getData().add(new XYChart.Data<>(i++, price));
-                    sleep(60000);
+                // Add data to the chart
+                double price = resultSet.getDouble("USD");
+                if (now.format(dtf).equals(resultSet.getTime("TIME").toString())) {
+                    for (double j = 0; j < 1; j+= (double) 1 /60) {
+                        dataSeries.getData().add(new XYChart.Data<>(j, resultSet.getDouble("USD")));
+//                        System.out.println(price);
+//                        System.out.print(j);
+                        sleep(1000);
+                    }
                 }
             }
+
             resultSet.close();
             statement.close();
             connection.close();
@@ -431,25 +450,18 @@ public class USD extends Thread implements Initializable {
             dataSeries.getData().clear(); // Clear existing data
 
             LocalTime now = LocalTime.now();
-            String currentTime = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:36");
 
-            LocalTime newTime = now.plusHours(1);
-            String formattedNewTime = newTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-
-            int i = 0;
             while (resultSet.next()) {
-                if (currentTime.equals(resultSet.getTime("Time").toString())) {
-                    double price = 0;
-                    while (!formattedNewTime.equals(resultSet.getTime("Time").toString())) {
-                        // Convert the USD value to a double
-                        price += resultSet.getDouble("USD");
-                        CurrentPrice.setText(resultSet.getString("USD"));
-                        sleep(60000);
-                        resultSet.next();
+                // Add data to the chart
+                double price = resultSet.getDouble("USD");
+                if (now.format(dtf).equals(resultSet.getTime("TIME").toString())) {
+                    for (double j = 0; j < 1; j+= (double) 1 /3600) {
+                        dataSeries.getData().add(new XYChart.Data<>(j, resultSet.getDouble("USD")));
+//                        System.out.println(price);
+//                        System.out.print(j);
+                        sleep(1000);
                     }
-                    price /= 60;
-                    // Add data to the chart
-                    dataSeries.getData().add(new XYChart.Data<>(i++, price));
                 }
             }
             resultSet.close();
@@ -494,25 +506,18 @@ public class USD extends Thread implements Initializable {
             dataSeries.getData().clear(); // Clear existing data
 
             LocalTime now = LocalTime.now();
-            String currentTime = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:36");
 
-            LocalTime newTime = now.plusHours(24);
-            String formattedNewTime = newTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-
-            int i = 0;
-            while (resultSet.next() || !resultSet.next()) {
-                double price = 0;
-                if (currentTime.equals(resultSet.getTime("Time").toString())) {
-                    while (!formattedNewTime.equals(resultSet.getTime("Time").toString())) {
-                        // Convert the USD value to a double
-                        price += resultSet.getDouble("USD");
-                        CurrentPrice.setText(resultSet.getString("USD"));
-                        sleep(60000);
-                        resultSet.next();
-                        if (!resultSet.next()) price += 0;
+            while (resultSet.next()) {
+                // Add data to the chart
+                double price = resultSet.getDouble("USD");
+                if (now.format(dtf).equals(resultSet.getTime("TIME").toString())) {
+                    for (double j = 0; j < 1; j+= (double) 1 /86400) {
+                        dataSeries.getData().add(new XYChart.Data<>(j, resultSet.getDouble("USD")));
+//                        System.out.println(price);
+//                        System.out.print(j);
+                        sleep(1000);
                     }
-                    // Add data to the chart
-                    dataSeries.getData().add(new XYChart.Data<>(i++, price));
                 }
             }
             resultSet.close();
@@ -557,26 +562,18 @@ public class USD extends Thread implements Initializable {
             dataSeries.getData().clear(); // Clear existing data
 
             LocalTime now = LocalTime.now();
-            String currentTime = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:36");
 
-            LocalTime newTime = now.plusHours(28*24);
-            String formattedNewTime = newTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-
-            int i = 0;
-            while (resultSet.next() || !resultSet.next()) {
-                if (currentTime.equals(resultSet.getTime("Time").toString())) {
-                    double price = 0;
-                    while (!formattedNewTime.equals(resultSet.getTime("Time").toString())) {
-                        // Convert the USD value to a double
-                        price += resultSet.getDouble("USD");
-                        CurrentPrice.setText(resultSet.getString("USD"));
-                        sleep(60000);
-                        resultSet.next();
-                        if (!resultSet.next()) price += 0;
+            while (resultSet.next()) {
+                // Add data to the chart
+                double price = resultSet.getDouble("USD");
+                if (now.format(dtf).equals(resultSet.getTime("TIME").toString())) {
+                    for (double j = 0; j < 1; j+= (double) 1 /2419200) {
+                        dataSeries.getData().add(new XYChart.Data<>(j, resultSet.getDouble("USD")));
+//                        System.out.println(price);
+//                        System.out.print(j);
+                        sleep(1000);
                     }
-                    price /= 4;
-                    // Add data to the chart
-                    dataSeries.getData().add(new XYChart.Data<>(i++, price));
                 }
             }
             resultSet.close();
@@ -621,25 +618,18 @@ public class USD extends Thread implements Initializable {
             dataSeries.getData().clear(); // Clear existing data
 
             LocalTime now = LocalTime.now();
-            String currentTime = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:36");
 
-            LocalTime newTime = now.plusHours(336*24);
-            String formattedNewTime = newTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-
-            int i = 0;
-            while (resultSet.next() || !resultSet.next()) {
-                if (currentTime.equals(resultSet.getTime("Time").toString())) {
-                    double price = 0;
-                    while (!formattedNewTime.equals(resultSet.getTime("Time").toString())) {
-                        // Convert the USD value to a double
-                        price += resultSet.getDouble("USD");
-                        CurrentPrice.setText(resultSet.getString("USD"));
-                        sleep(60000);
-                        resultSet.next();
+            while (resultSet.next()) {
+                // Add data to the chart
+                double price = resultSet.getDouble("USD");
+                if (now.format(dtf).equals(resultSet.getTime("TIME").toString())) {
+                    for (double j = 0; j < 1; j+= (double) 1 /29030400) {
+                        dataSeries.getData().add(new XYChart.Data<>(j, resultSet.getDouble("USD")));
+//                        System.out.println(price);
+//                        System.out.print(j);
+                        sleep(1000);
                     }
-                    price /= 12;
-                    // Add data to the chart
-                    dataSeries.getData().add(new XYChart.Data<>(i++, price));
                 }
             }
             resultSet.close();
